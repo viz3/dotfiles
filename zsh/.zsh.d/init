@@ -1,0 +1,23 @@
+autoload -U compinit; compinit
+bindkey -e
+
+# 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
+setopt append_history
+
+# 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
+setopt auto_cd
+
+# 8 ビット目を通すようになり、日本語のファイル名などを見れるようになる
+setopt print_eightbit
+
+# コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
+setopt magic_equal_subst
+
+# 戻り値が 0 以外の場合終了コードを表示する
+setopt print_exit_value
+
+# rm * などの際、本当に全てのファイルを消して良いかの確認しないようになる
+setopt rm_star_silent
+
+# ファイル名で #, ~, ^ の 3 文字を正規表現として扱う
+setopt extended_glob
