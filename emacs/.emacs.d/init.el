@@ -1,0 +1,63 @@
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
+(keyboard-translate ?\C-h ?\C-?)
+(global-font-lock-mode t)
+(show-paren-mode 1)
+(menu-bar-mode -1)
+; (tool-bar-mode -1)
+; (scroll-bar-mode -1)
+(line-number-mode 1)
+(column-number-mode 1)
+(auto-fill-mode -1)
+
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
+
+;; elscreen                                                                                                                                    
+(load "elscreen" "ElScreen" t)
+
+;;; w3m
+;(require 'w3m-load)
+;(setq browse-url-browser-function 'w3m-browse-url)
+
+;; twittering-mode
+(autoload 'twit "twittering-mode" "twittering-mode" t)
+(setq twittering-auth-method 'xauth)
+
+;; gtags
+(autoload 'gtags-mode "gtags" "" t)
+(setq gtags-suggested-key-mapping t)
+;(setq gtags-prefix-key "\C-x")
+(add-hook 'c-mode-hook '(lambda () (gtags-mode 1)))
+(add-hook 'c++-mode-hook '(lambda () (gtags-mode 1)))
+(add-hook 'php-mode-hook '(lambda () (gtags-mode 1)))
+
+;; whitespace
+(require 'whitespace)
+(setq whitespace-style '(face empty space-before-tab lines-tail trailing))
+(add-hook 'c-mode-hook '(lambda () (whitespace-mode t)))
+(add-hook 'c++-mode-hook '(lambda () (whitespace-mode t)))
+;(global-whitespace-mode t)
+
+;; whitespace behavior
+;(setq-default show-trailing-whitespace t)
+(setq-default indicate-empty-lines t)
+
+;; php-mode
+(require 'php-mode)
+;(setq php-mode-force-pear t)
+(add-hook 'php-mode-hook
+	  '(lambda ()
+	     (set (make-local-variable 'tab-width) 8)
+	     (set (make-local-variable 'c-basic-offset) 8)
+	     (set (make-local-variable 'indent-tabs-mode) t)
+	     (c-set-offset 'block-open' -)
+	     (c-set-offset 'block-close' 0)))
+
+;; c-mode
+(add-hook 'c-mode-hook
+	  '(lambda ()
+	     (set (make-local-variable 'tab-width) 4)
+	     (set (make-local-variable 'c-basic-offset) 4)
+	     (set (make-local-variable 'indent-tabs-mode) nil)
+	     (c-set-offset 'block-open' -)
+	     (c-set-offset 'block-close' 0)))
