@@ -1,4 +1,5 @@
 export PATH="$HOME/local/bin:$HOME/bin:/opt/local/sbin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export EDITOR=vim
 if [ ! -z `which keychain` ]; then
     keychain id_rsa
     [ -z "$HOSTNAME" ] && HOSTNAME=`uname -n`
