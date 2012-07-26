@@ -4,15 +4,20 @@
 (global-font-lock-mode t)
 (show-paren-mode 1)
 (menu-bar-mode -1)
-; (tool-bar-mode -1)
-; (scroll-bar-mode -1)
 (line-number-mode 1)
 (column-number-mode 1)
 (auto-fill-mode -1)
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp")
+(let ((default-directory (expand-file-name "~/.emacs.d/lisp")))
+ (add-to-list 'load-path default-directory)
+ (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+     (normal-top-level-add-subdirs-to-load-path)))
+;(add-to-list 'load-path "~/.emacs.d/site-lisp")
 
-;; elscreen                                                                                                                                    
+;; skk
+(require 'skk-setup)
+
+;; elscreen
 (load "elscreen" "ElScreen" t)
 
 ;;; w3m
@@ -22,14 +27,6 @@
 ;; twittering-mode
 (autoload 'twit "twittering-mode" "twittering-mode" t)
 (setq twittering-auth-method 'xauth)
-
-;; gtags
-(autoload 'gtags-mode "gtags" "" t)
-(setq gtags-suggested-key-mapping t)
-;(setq gtags-prefix-key "\C-x")
-(add-hook 'c-mode-hook '(lambda () (gtags-mode 1)))
-(add-hook 'c++-mode-hook '(lambda () (gtags-mode 1)))
-(add-hook 'php-mode-hook '(lambda () (gtags-mode 1)))
 
 ;; whitespace
 (require 'whitespace)
@@ -61,3 +58,24 @@
 	     (set (make-local-variable 'indent-tabs-mode) nil)
 	     (c-set-offset 'block-open' -)
 	     (c-set-offset 'block-close' 0)))
+
+;; gtags
+(autoload 'gtags-mode "gtags" "" t)
+(setq gtags-suggested-key-mapping t)
+;(setq gtags-prefix-key "\C-x")
+(add-hook 'c-mode-hook '(lambda () (gtags-mode 1)))
+(add-hook 'c++-mode-hook '(lambda () (gtags-mode 1)))
+(add-hook 'php-mode-hook '(lambda () (gtags-mode 1)))
+
+;; cocoa-emacs
+(cond ((eq window-system 'ns)
+       (tool-bar-mode -1)
+       (scroll-bar-mode -1)
+       ;; font
+       (create-fontset-from-ascii-font "Menlo-14:weight=normal:slant=normal" nil "menlokakugo")
+       (set-fontset-font "fontset-menlokakugo"
+			 'unicode
+			 (font-spec :family "Hiragino Kaku Gothic ProN" :size 16)
+			 nil
+			 'append)
+       (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))))
