@@ -55,6 +55,7 @@
 (setq-default indicate-empty-lines t)
 
 ;; php-mode
+;; http://php-mode.sourceforge.net/
 (require 'php-mode)
 ;(setq php-mode-force-pear t)
 (add-hook 'php-mode-hook
