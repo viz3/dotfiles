@@ -83,6 +83,21 @@
 (add-hook 'c++-mode-hook '(lambda () (gtags-mode 1)))
 (add-hook 'php-mode-hook '(lambda () (gtags-mode 1)))
 
+;; scheme-mode
+(modify-coding-system-alist 'process "gosh" '(utf-8 . utf-8))
+(setq scheme-program-name
+      (cond ((eq window-system 'ns) "~/local/bin/gosh -i")
+	    (t "gosh -i")))
+(autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
+(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
+(defun scheme-other-window ()
+  "Run scheme on other window"
+  (interactive)
+  (switch-to-buffer-other-window
+   (get-buffer-create "*scheme*"))
+  (run-scheme scheme-program-name))
+(define-key global-map "\C-cs" 'scheme-other-window)
+
 ;; environment specific preferences
 (cond
  ;; cocoa-emacs
