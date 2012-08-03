@@ -97,6 +97,9 @@
    (get-buffer-create "*scheme*"))
   (run-scheme scheme-program-name))
 (define-key global-map "\C-cs" 'scheme-other-window)
+(add-hook 'scheme-mode-hook
+	  '(lambda ()
+	     (set (make-local-variable 'indent-tabs-mode) nil)))
 
 ;; environment specific preferences
 (cond
