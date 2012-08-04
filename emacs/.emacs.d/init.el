@@ -88,6 +88,10 @@
 (add-hook 'c-mode-hook '(lambda () (gtags-mode 1)))
 (add-hook 'c++-mode-hook '(lambda () (gtags-mode 1)))
 (add-hook 'php-mode-hook '(lambda () (gtags-mode 1)))
+(add-hook 'gtags-mode-hook
+	  '(lambda ()
+	     (cond ((eq window-system 'ns)
+		    (setq gtags-global-command "~/local/bin/global")))))
 
 ;; scheme-mode
 (modify-coding-system-alist 'process "gosh" '(utf-8 . utf-8))
@@ -120,7 +124,4 @@
 		    (font-spec :family "Hiragino Kaku Gothic ProN" :size 16)
 		    nil
 		    'append)
-  (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))
-  ;; gtags
-  (setq gtags-global-command "/usr/local/bin/global")
-  ))
+  (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))))
