@@ -54,6 +54,12 @@
 ;(setq-default show-trailing-whitespace t)
 (setq-default indicate-empty-lines t)
 
+;; emacs-lisp-mode
+(add-hook 'emacs-lisp-mode-hook
+	  '(lambda ()
+	     (whitespace-mode t)
+	     (set (make-local-variable 'indent-tabs-mode) nil)))
+
 ;; php-mode
 ;; http://php-mode.sourceforge.net/
 (require 'php-mode)
