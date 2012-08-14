@@ -58,25 +58,32 @@
 ;(setq-default show-trailing-whitespace t)
 (setq-default indicate-empty-lines t)
 
+;; emacs-lisp-mode
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (whitespace-mode t)
+             (set (make-local-variable 'indent-tabs-mode) nil)))
+
 ;; php-mode
+;; http://php-mode.sourceforge.net/
 (require 'php-mode)
 ;(setq php-mode-force-pear t)
 (add-hook 'php-mode-hook
-	  '(lambda ()
-	     (set (make-local-variable 'tab-width) 8)
-	     (set (make-local-variable 'c-basic-offset) 8)
-	     (set (make-local-variable 'indent-tabs-mode) t)
-	     (c-set-offset 'block-open' -)
-	     (c-set-offset 'block-close' 0)))
+          '(lambda ()
+             (set (make-local-variable 'tab-width) 8)
+             (set (make-local-variable 'c-basic-offset) 8)
+             (set (make-local-variable 'indent-tabs-mode) t)
+             (c-set-offset 'block-open' -)
+             (c-set-offset 'block-close' 0)))
 
 ;; c-mode
 (add-hook 'c-mode-hook
-	  '(lambda ()
-	     (set (make-local-variable 'tab-width) 4)
-	     (set (make-local-variable 'c-basic-offset) 4)
-	     (set (make-local-variable 'indent-tabs-mode) nil)
-	     (c-set-offset 'block-open' -)
-	     (c-set-offset 'block-close' 0)))
+          '(lambda ()
+             (set (make-local-variable 'tab-width) 4)
+             (set (make-local-variable 'c-basic-offset) 4)
+             (set (make-local-variable 'indent-tabs-mode) nil)
+             (c-set-offset 'block-open' -)
+             (c-set-offset 'block-close' 0)))
 
 ;; gtags
 (autoload 'gtags-mode "gtags" "" t)
@@ -85,6 +92,28 @@
 (add-hook 'c-mode-hook '(lambda () (gtags-mode 1)))
 (add-hook 'c++-mode-hook '(lambda () (gtags-mode 1)))
 (add-hook 'php-mode-hook '(lambda () (gtags-mode 1)))
+(add-hook 'gtags-mode-hook
+          '(lambda ()
+             (cond ((eq window-system 'ns)
+                    (setq gtags-global-command "~/local/bin/global")))))
+
+;; scheme-mode
+(modify-coding-system-alist 'process "gosh" '(utf-8 . utf-8))
+(setq scheme-program-name
+      (cond ((eq window-system 'ns) "~/local/bin/gosh -i")
+            (t "gosh -i")))
+(autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
+(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
+(defun scheme-other-window ()
+  "Run scheme on other window"
+  (interactive)
+  (switch-to-buffer-other-window
+   (get-buffer-create "*scheme*"))
+  (run-scheme scheme-program-name))
+(define-key global-map "\C-cs" 'scheme-other-window)
+(add-hook 'scheme-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'indent-tabs-mode) nil)))
 
 ;; environment specific preferences
 (cond
@@ -95,11 +124,8 @@
   ;; font
   (create-fontset-from-ascii-font "Menlo-14:weight=normal:slant=normal" nil "menlokakugo")
   (set-fontset-font "fontset-menlokakugo"
-		    'unicode
-		    (font-spec :family "Hiragino Kaku Gothic ProN" :size 16)
-		    nil
-		    'append)
-  (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))
-  ;; gtags
-  (setq gtags-global-command "/usr/local/bin/global")
-  ))
+                    'unicode
+                    (font-spec :family "Hiragino Kaku Gothic ProN" :size 16)
+                    nil
+                    'append)
+  (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))))
