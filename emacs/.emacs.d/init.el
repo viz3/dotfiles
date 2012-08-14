@@ -8,6 +8,10 @@
 (column-number-mode 1)
 (auto-fill-mode -1)
 
+;; set comment out style.
+;; see comment-styles in lisp/newcomment.el
+(setq comment-style 'extra-line)
+
 ;; load-path setting
 ;; see https://bitbucket.org/sakito/dot.emacs.d/wiki/Home
 
