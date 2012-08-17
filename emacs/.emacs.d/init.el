@@ -8,6 +8,9 @@
 (column-number-mode 1)
 (auto-fill-mode -1)
 
+;; linum-mode
+(setq linum-format "%5d|")
+
 ;; set comment out style.
 ;; see comment-styles in lisp/newcomment.el
 (setq comment-style 'extra-line)
