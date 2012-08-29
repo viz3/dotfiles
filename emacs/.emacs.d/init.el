@@ -118,6 +118,9 @@
           '(lambda ()
              (set (make-local-variable 'indent-tabs-mode) nil)))
 
+;; use ruby-mode for Rakefile
+(add-to-list 'auto-mode-alist '("[Rr]akefile" . ruby-mode))
+
 ;; environment specific preferences
 (cond
  ;; cocoa-emacs
