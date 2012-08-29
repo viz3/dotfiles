@@ -9,7 +9,8 @@
 (auto-fill-mode -1)
 
 ;; linum-mode
-(setq linum-format "%5d|")
+;; default is 'dynamic, for example, specify "%5d|"
+(setq linum-format 'dynamic)
 
 ;; set comment out style.
 ;; see comment-styles in lisp/newcomment.el
