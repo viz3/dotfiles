@@ -121,6 +121,7 @@
 
 ;; use ruby-mode for Rakefile
 (add-to-list 'auto-mode-alist '("[Rr]akefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 
 ;; environment specific preferences
 (cond
