@@ -32,7 +32,7 @@ end
 
 task :screen do
   logdir = "#{home_dir}/var/log/screen"
-  Dir.mkdir(logdir) unless File.exists?(logdir)
+  `mkdir -p #{logdir}`
   create_symlink("#{current_dir}/screen/.screenrc", "#{home_dir}/.screenrc")
 end
 
