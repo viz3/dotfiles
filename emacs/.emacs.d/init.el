@@ -123,6 +123,12 @@
 (add-to-list 'auto-mode-alist '("[Rr]akefile" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 
+;; Shell-script mode
+(add-hook 'sh-mode-hook
+          '(lambda ()
+             (whitespace-mode t)
+             (set (make-local-variable 'indent-tabs-mode) nil)))
+
 ;; environment specific preferences
 (cond
  ;; cocoa-emacs
