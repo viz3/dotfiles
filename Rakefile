@@ -13,6 +13,33 @@ def create_symlink(src, dst)
   File.symlink(src, dst)
 end
 
+task :default => [:bash, :vim, :screen, :zsh, :emacs, :global] do
+end
+
+task :bash do
+  create_symlink("#{current_dir}/bash/.bash_profile", "#{home_dir}/.bash_profile")
+end
+
+task :emacs do
+  emacs_dir = "#{home_dir}/.emacs.d"
+  Dir.mkdir(emacs_dir) unless File.exists?(emacs_dir)
+  create_symlink("#{current_dir}/emacs/.emacs.d/init.el", "#{emacs_dir}/init.el")
+end
+
+task :global do
+  create_symlink("#{current_dir}/global/.globalrc", "#{home_dir}/.globalrc")
+end
+
+task :screen do
+  logdir = "#{home_dir}/var/log/screen"
+  Dir.mkdir(logdir) unless File.exists?(logdir)
+  create_symlink("#{current_dir}/screen/.screenrc", "#{home_dir}/.screenrc")
+end
+
+task :vim do
+  create_symlink("#{current_dir}/vim/.vimrc", "#{home_dir}/.vimrc")
+end
+
 task :zsh do
   zsh_dir = "#{home_dir}/.zsh.d"
   rename_with_currenttime(zsh_dir) if File.exists?(zsh_dir)
