@@ -127,6 +127,7 @@
 (add-hook 'sh-mode-hook
           '(lambda ()
              (whitespace-mode t)
+             (toggle-truncate-lines t)
              (set (make-local-variable 'indent-tabs-mode) nil)))
 
 ;; environment specific preferences
