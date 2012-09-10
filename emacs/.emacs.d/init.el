@@ -130,6 +130,10 @@
              (toggle-truncate-lines t)
              (set (make-local-variable 'indent-tabs-mode) nil)))
 
+;; disable vc-git
+;; http://stackoverflow.com/questions/5748814/how-does-one-disable-vc-git-in-emacs
+(remove-hook 'find-file-hooks 'vc-find-file-hook)
+
 ;; environment specific preferences
 (cond
  ;; cocoa-emacs
