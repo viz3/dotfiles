@@ -75,7 +75,7 @@
 (add-hook 'php-mode-hook
           '(lambda ()
              (set (make-local-variable 'tab-width) 8)
-             (set (make-local-variable 'c-basic-offset) 8)
+             (set (make-local-variable 'c-basic-offset) 4)
              (set (make-local-variable 'indent-tabs-mode) t)
              (c-set-offset 'block-open' -)
              (c-set-offset 'block-close' 0)))
