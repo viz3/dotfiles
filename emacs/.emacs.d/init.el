@@ -130,6 +130,11 @@
              (toggle-truncate-lines t)
              (set (make-local-variable 'indent-tabs-mode) nil)))
 
+;; markdown-mode
+;; http://jblevins.org/projects/markdown-mode/
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
 ;; disable vc-git
 ;; http://stackoverflow.com/questions/5748814/how-does-one-disable-vc-git-in-emacs
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
