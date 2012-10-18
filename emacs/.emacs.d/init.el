@@ -83,7 +83,7 @@
 ;; c-mode
 (add-hook 'c-mode-hook
           '(lambda ()
-             (set (make-local-variable 'tab-width) 4)
+             (set (make-local-variable 'tab-width) 8)
              (set (make-local-variable 'c-basic-offset) 4)
              (set (make-local-variable 'indent-tabs-mode) nil)
              (c-set-offset 'block-open' -)
