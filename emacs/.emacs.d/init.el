@@ -89,6 +89,11 @@
              (c-set-offset 'block-open' -)
              (c-set-offset 'block-close' 0)))
 
+;; js-mode
+(add-hook 'js-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'indent-tabs-mode) nil)))
+
 ;; gtags
 (autoload 'gtags-mode "gtags" "" t)
 (setq gtags-suggested-key-mapping t)
