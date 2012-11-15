@@ -2,6 +2,6 @@
 	name = Yusuke Odate
 	email = viz3.dev@gmail.com
 [core]
-        pager = lv -c
+	pager = lv -c
 [alias]
-        ls = log --graph --all --color --pretty=format:'%Cgreen%h %cd %Cred%cn %Creset%s %Cred%d'
+	ls = log --graph --all --color --pretty=format:'%Cgreen%h %cd %Cred%cn %Creset%s %Cred%d'
