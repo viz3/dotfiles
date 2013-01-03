@@ -89,6 +89,15 @@
              (c-set-offset 'block-open' -)
              (c-set-offset 'block-close' 0)))
 
+;; c++-mode
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'tab-width) 8)
+             (set (make-local-variable 'c-basic-offset) 4)
+             (set (make-local-variable 'indent-tabs-mode) nil)
+             (c-set-offset 'block-open' -)
+             (c-set-offset 'block-close' 0)))
+
 ;; js-mode
 (add-hook 'js-mode-hook
           '(lambda ()
