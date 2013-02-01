@@ -8,6 +8,15 @@
 (column-number-mode 1)
 (auto-fill-mode -1)
 
+;; window movement shortcut
+;; http://dev.ariel-networks.com/wp/documents/aritcles/emacs/part16
+(define-prefix-command 'windmove-map)
+(global-set-key (kbd "C-q") 'windmove-map)
+(define-key windmove-map "h" 'windmove-left)
+(define-key windmove-map "j" 'windmove-down)
+(define-key windmove-map "k" 'windmove-up)
+(define-key windmove-map "l" 'windmove-right)
+
 ;; linum-mode
 ;; default is 'dynamic, for example, specify "%5d|"
 (setq linum-format 'dynamic)
