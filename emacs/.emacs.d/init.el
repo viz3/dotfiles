@@ -162,6 +162,13 @@
 ;; http://stackoverflow.com/questions/5748814/how-does-one-disable-vc-git-in-emacs
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
 
+;; folding-mode
+;; http://www.emacswiki.org/emacs/FoldingMode
+(autoload 'folding-mode          "folding" "Folding mode" t)
+(autoload 'turn-off-folding-mode "folding" "Folding mode" t)
+(autoload 'turn-on-folding-mode  "folding" "Folding mode" t)
+(add-hook 'markdown-mode-hook '(lambda () (folding-mode t)))
+
 ;; environment specific preferences
 (cond
  ;; cocoa-emacs
