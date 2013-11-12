@@ -182,4 +182,20 @@
                     (font-spec :family "Hiragino Kaku Gothic ProN" :size 14)
                     nil
                     'append)
-  (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))))
+  (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo")))
+ ((eq window-system 'x)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  ;; font
+  (set-face-attribute 'default nil
+                      :family "Ricty Discord"
+                      :height 120)
+  (set-fontset-font (frame-parameter nil 'font)
+                    'japanese-jisx0208
+                    (cons "Ricty Discord" "iso10646-1"))
+  (set-fontset-font (frame-parameter nil 'font)
+                    'japanese-jisx0212
+                    (cons "Ricty Discord" "iso10646-1"))
+  (set-fontset-font (frame-parameter nil 'font)
+                    'katakana-jisx0201
+                    (cons "Ricty Discord" "iso10646-1"))))
