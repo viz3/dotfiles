@@ -186,6 +186,9 @@
  ((eq window-system 'x)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+  ;; clipboard behaviour
+  ;; http://www.emacswiki.org/emacs/CopyAndPaste
+  (setq x-select-enable-clipboard t)
   ;; font
   (set-face-attribute 'default nil
                       :family "Ricty Discord"
