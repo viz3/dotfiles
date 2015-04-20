@@ -46,11 +46,20 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "lisp" "site-lisp")
 
+;; melpa
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+
 ;; skk
-(require 'skk-setup)
+(global-set-key (kbd "C-x C-j") 'skk-mode)
 
 ;; elscreen
-(load "elscreen" "ElScreen" t)
+(elscreen-start)
 
 ;;; w3m
 ;(require 'w3m-load)
@@ -80,7 +89,7 @@
 ;; php-mode
 ;; http://php-mode.sourceforge.net/
 (require 'php-mode)
-;(setq php-mode-force-pear t)
+(setq php-mode-force-pear t)
 (add-hook 'php-mode-hook
           '(lambda ()
              (set (make-local-variable 'tab-width) 8)
