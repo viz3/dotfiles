@@ -119,6 +119,7 @@
 ;; js-mode
 (add-hook 'js-mode-hook
           '(lambda ()
+             (setq js-indent-level 2)
              (set (make-local-variable 'indent-tabs-mode) nil)))
 
 ;; gtags
