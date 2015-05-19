@@ -185,6 +185,8 @@
  ((eq window-system 'ns)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+  ;; http://www.emacswiki.org/emacs/FrameSize
+  (set-frame-size (selected-frame) 130 60)
   ;; font
   (create-fontset-from-ascii-font "Menlo-12:weight=normal:slant=normal" nil "menlokakugo")
   (set-fontset-font "fontset-menlokakugo"
