@@ -12,3 +12,6 @@ alias genpasswd='cat /dev/urandom | uuencode -m - | head -n2 | tail -n1 | cut -c
 # https://github.com/sstephenson/rbenv/
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
+
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
