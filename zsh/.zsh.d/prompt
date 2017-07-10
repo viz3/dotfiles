@@ -1,7 +1,0 @@
-if [ "x`virtualname 2>/dev/null`" = "x" ]; then
-    PROMPT="%n@%m:%# "
-else
-    PROMPT="%n@`virtualname`:%# "
-    #PROMPT="%# "
-fi
-RPROMPT="[%~]"

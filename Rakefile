@@ -41,13 +41,5 @@ task :vim do
 end
 
 task :zsh do
-  zsh_dir = "#{home_dir}/.zsh.d"
-  rename_with_currenttime(zsh_dir) if File.exists?(zsh_dir)
-  Dir.mkdir(zsh_dir)
-  create_symlink("#{current_dir}/zsh/.zshrc",                     "#{home_dir}/.zshrc")
-  create_symlink("#{current_dir}/zsh/.zsh.d/init",                "#{zsh_dir}/rc-S00-init")
-  create_symlink("#{current_dir}/zsh/.zsh.d/history",             "#{zsh_dir}/rc-S10-history")
-  create_symlink("#{current_dir}/zsh/.zsh.d/prompt",              "#{zsh_dir}/rc-S50-prompt")
-  create_symlink("#{current_dir}/zsh/.zsh.d/random-color-prompt", "#{zsh_dir}/rc-S51-random-color-prompt")
-  create_symlink("#{current_dir}/zsh/.zsh.d/screen",              "#{zsh_dir}/rc-S60-screen")
+  create_symlink("#{current_dir}/zsh/.zshrc", "#{home_dir}/.zshrc")
 end
