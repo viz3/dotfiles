@@ -213,4 +213,9 @@
                     (cons "Ricty Discord" "iso10646-1"))
   (set-fontset-font (frame-parameter nil 'font)
                     'katakana-jisx0201
-                    (cons "Ricty Discord" "iso10646-1"))))
+                    (cons "Ricty Discord" "iso10646-1")))
+ ((eq window-system 'w32)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (custom-set-faces
+   '(default ((t (:family "Ricty Diminished" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))))
