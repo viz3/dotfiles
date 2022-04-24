@@ -13,6 +13,12 @@ alias genpasswd='cat /dev/urandom | uuencode -m - | head -n2 | tail -n1 | cut -c
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
 
+# for pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 
