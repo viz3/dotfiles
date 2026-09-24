@@ -65,6 +65,11 @@
 
 (global-set-key (kbd "C-x C-j") #'skk-mode)
 
+;; Run `M-x skk-get` to download SKK-JISYO.L.
+(setq skk-large-jisyo
+      (expand-file-name "skk-get-jisyo/SKK-JISYO.L"
+                        user-emacs-directory))
+
 ;; ----------------------------------------------------------------------
 ;; ElScreen
 ;; ----------------------------------------------------------------------
