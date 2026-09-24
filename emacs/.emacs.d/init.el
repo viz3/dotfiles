@@ -131,9 +131,9 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1))
 
-;; Linux
-(when (and (eq system-type 'gnu/linux)
-           (display-graphic-p))
+;; Font
+(when (and (display-graphic-p)
+           (find-font (font-spec :family "PlemolJP")))
   (set-face-attribute 'default nil
                       :family "PlemolJP"
                       :height 120)
