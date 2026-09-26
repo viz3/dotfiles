@@ -134,17 +134,43 @@
 
 (when (display-graphic-p)
   (tool-bar-mode -1)
-  (scroll-bar-mode -1))
+  (scroll-bar-mode -1)
 
-;; Font
-(when (and (display-graphic-p)
-           (find-font (font-spec :family "PlemolJP")))
-  (set-face-attribute 'default nil
-                      :family "PlemolJP"
-                      :height 120)
-  (set-face-attribute 'fixed-pitch nil
-                      :family "PlemolJP"
-                      :height 120))
+  ;; Font
+  (pcase system-type
+    ;; Linux
+    ('gnu/linux
+     (when (find-font (font-spec :family "PlemolJP"))
+       (set-face-attribute 'default nil
+                           :family "PlemolJP"
+                           :height 120)
+       (set-face-attribute 'fixed-pitch nil
+                           :family "PlemolJP"
+                           :height 120)))
+
+    ;; Windows
+    ('windows-nt
+     (when (find-font (font-spec :family "PlemolJP"))
+       (set-face-attribute 'default nil
+                           :family "PlemolJP"
+                           :height 120)
+       (set-face-attribute 'fixed-pitch nil
+                           :family "PlemolJP"
+                           :height 120)))
+
+    ;; macOS
+    ('darwin
+     (when (find-font (font-spec :family "Menlo"))
+       (set-face-attribute 'default nil
+                           :family "Menlo"
+                           :height 120)
+       (set-face-attribute 'fixed-pitch nil
+                           :family "Menlo"
+                           :height 120))
+     (when (find-font (font-spec :family "Hiragino Kaku Gothic ProN"))
+       (set-fontset-font t 'japanese-jisx0208
+                         (font-spec :family "Hiragino Kaku Gothic ProN"
+                                    :size 14))))))
 
 ;; ----------------------------------------------------------------------
 ;; Custom
